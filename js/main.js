@@ -16,3 +16,36 @@ function getPlayerChoice() {
     }
 }
 
+function roundOfGame(playerSelection, computerSelection) {
+    if(playerSelection === computerSelection){
+        alert("Draw! 2 " + playerSelection + "s");
+        return 0;
+    }else if(playerSelection === "Rock" && computerSelection === "Scissors" 
+        || playerSelection == "Scissors" && computerSelection == "Paper" 
+        || playerSelection === "Paper" && computerSelection === "Rock")
+    {
+        alert(`You win! ${playerSelection} beats ${computerSelection}`);
+        return 1;
+    }else{
+        alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
+        return -1;
+    }
+}
+
+function game() { 
+    let i = 0;
+    let wins = 0;
+    while(i < 5){
+        wins += roundOfGame(getPlayerChoice(),getComputerChoice());
+        i++;
+    }
+    if(wins == 0){
+        alert("DRAW!");
+    }else if(wins < 0){
+        alert("LOOSE");
+    }else{
+        alert("WIN");
+    }
+}
+game();
+
