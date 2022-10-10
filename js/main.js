@@ -16,6 +16,10 @@ function getPlayerChoice() {
     }
 }
 
+document.querySelectorAll("button").forEach(btn => btn.addEventListener('click', function () {
+    roundOfGame(this.innerText, getComputerChoice());
+}));
+
 function roundOfGame(playerSelection, computerSelection) {
     if(playerSelection === computerSelection){
         alert("Draw! 2 " + playerSelection + "s");
@@ -32,20 +36,20 @@ function roundOfGame(playerSelection, computerSelection) {
     }
 }
 
-function game() { 
-    let i = 0;
-    let wins = 0;
-    while(i < 5){
-        wins += roundOfGame(getPlayerChoice(),getComputerChoice());
-        i++;
-    }
-    if(wins == 0){
-        alert("DRAW!");
-    }else if(wins < 0){
-        alert("LOOSE");
-    }else{
-        alert("WIN");
-    }
-}
-game();
+// function game() { 
+//     let i = 0;
+//     let wins = 0;
+//     while(i < 5){
+//         wins += roundOfGame(getPlayerChoice(),getComputerChoice());
+//         i++;
+//     }
+//     if(wins == 0){
+//         alert("DRAW!");
+//     }else if(wins < 0){
+//         alert("LOOSE");
+//     }else{
+//         alert("WIN");
+//     }
+// }
+// game();
 
