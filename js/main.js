@@ -18,22 +18,36 @@ function getPlayerChoice() {
 
 document.querySelectorAll("button").forEach(btn => btn.addEventListener('click', function () {
     roundOfGame(this.innerText, getComputerChoice());
+    if(timesPlayerWon == 5){
+        res.innerText = `YOU ARE WINNER
+                        SCORE: ${timesPlayerWon} - ${timesComputerWon}`;
+        timesPlayerWon = 0;
+        timesComputerWon = 0;
+    }else if(timesComputerWon == 5){
+        res.innerText = `YOU ARE LOOSER
+                        SCORE: ${timesPlayerWon} - ${timesComputerWon}`;
+        timesPlayerWon = 0;
+        timesComputerWon = 0;
+    }
 }));
-
+const res = document.querySelector("#result");
+var timesPlayerWon = 0;
+var timesComputerWon = 0;
 function roundOfGame(playerSelection, computerSelection) {
     if(playerSelection === computerSelection){
-        alert("Draw! 2 " + playerSelection + "s");
+        res.innerText = `2 ${playerSelection}s : DRAW!`;
         return 0;
     }else if(playerSelection === "Rock" && computerSelection === "Scissors" 
         || playerSelection == "Scissors" && computerSelection == "Paper" 
         || playerSelection === "Paper" && computerSelection === "Rock")
     {
-        alert(`You win! ${playerSelection} beats ${computerSelection}`);
-        return 1;
+        res.innerText = `You win! ${playerSelection} beats ${computerSelection}`;
+        return ++timesPlayerWon;
     }else{
-        alert(`You Lose! ${computerSelection} beats ${playerSelection}`);
-        return -1;
+        res.innerText = `You Lose! ${computerSelection} beats ${playerSelection}`;
+        return ++timesComputerWon;
     }
+
 }
 
 // function game() { 
